@@ -1,0 +1,29 @@
+{
+    "intents": [
+        {
+            "tag": "greetings",
+            "patterns": ["hi", "hello", "how are you", "hey", "what's up"],
+            "responses": ["Hello!", "Good to see you", "Hi there, how can I help?", "Hello, I am doing great"]
+        },
+        {
+            "tag": "name",
+            "patterns": ["what's your name", "tell me your name", "what are you called", "who are you"],
+            "responses": ["I am a bot named Friendly", "My name is Friendly", ""]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+            "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+            "responses": ["My pleasure", "You're Welcome", "Happy to help :)", "Any time!"]
+        },
+        {
+            "tag": "query",
+            "patterns": ["What is BTech"],
+            "responses": ["Btech is a 4 year course, its full form is Bachelor of Technology"]
+        } 
+    ]
+}
