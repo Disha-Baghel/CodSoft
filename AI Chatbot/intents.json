@@ -24,6 +24,11 @@
             "tag": "query",
             "patterns": ["What is BTech"],
             "responses": ["Btech is a 4 year course, its full form is Bachelor of Technology"]
+        },
+        {
+            "tag": "weather",
+            "patterns": ["What is the weather today", "How is the weather today", "What is the weather like today", "weather"],
+            "responses": [""]
         }
     ]
 }
