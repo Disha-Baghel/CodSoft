@@ -3,6 +3,7 @@ from nltk.stem import WordNetLemmatizer
 import json
 import random
 import re
+import requests
 
 # intents = json.loads(open('intents.json').read())
 with open('intents.json') as file:
@@ -44,6 +45,24 @@ def lemmatize(user):
     # print(lemmatized_tokens)
     return lemmatized_tokens
 
+def get_weather(city):
+    api_key = "966de72d12694c5731f0e17917868be7"
+    base_url = "http://api.weatherstack.com/"
+
+    complete_url = base_url + "current" + "?access_key=" + api_key + "&query=" + city
+    
+    try:
+        response = requests.get(complete_url)
+        data = response.json()
+
+        if response.status_code == 200:
+            return(f"The weather in " + city + " is " + str(data['current']['temperature']) + " degrees.")
+        else:
+            return("unable to fetch weather at the moment")
+    except Exception as e:
+        return (f"An error occurred: {str(e)}")
+
+
 if __name__ == "__main__":
     
     while True:
@@ -57,7 +76,20 @@ if __name__ == "__main__":
 
         matched_intent = match_intent(lemmatized_tokens)
         if(matched_intent):
-            print("Friendly: ", matched_intent['responses'][0])
+            if matched_intent["tag"] == 'weather':
+                city_match = re.search(r'\b(?:weather|in)\s+(\w+)\b', user, re.IGNORECASE)
+                if city_match:
+                    city = city_match.group(1)
+                    weather_response = get_weather(city)
+                    print("Friendly: ", weather_response)
+                
+                else:
+                    print("Friendly: Please specify a city.")
+            else:
+                print("Friendly: ", matched_intent['responses'][random.randint(0, len(matched_intent['responses']) - 1)])
 
         else:
             print("Friendly: I do not understand...")
+
+
+#************** weather api: 966de72d12694c5731f0e17917868be7 ************
