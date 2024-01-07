@@ -91,5 +91,3 @@ if __name__ == "__main__":
         else:
             print("Friendly: I do not understand...")
 
-
-#************** weather api: 966de72d12694c5731f0e17917868be7 ************
