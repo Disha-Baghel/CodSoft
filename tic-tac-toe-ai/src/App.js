@@ -25,51 +25,47 @@
 // export default App;
 import React from "react";
 import {useState} from 'react';
-import "./output.css";
+import "./App.css";
 
-function Square({value}) {
-
+function Square() {
+  const [value, setValue] = useState("1");
 
   function handleClick() {
     console.log("click");
   }
 
   return (
+    <button class="square bg-slate-200 w-24 h-24 hover:bg-slate-300" onClick={handleClick}>
+      {value}
+    </button>
+  );
+  
+}
+
+function Board() {
+  return (
     <>
       <div class="place-content-center">
+        
         <div class="board-row">
-          <button class="square mx-auto bg-slate-200 w-24 h-24" onClick={handleClick}>{value}</button>
-          <button class="square mx-auto bg-slate-200 w-24 h-24 border-x-2 border-black" onClick={handleClick}>
-            {value}
-          </button>
-          <button class="square mx-auto bg-slate-200 w-24 h-24" onClick={handleClick}>
-            {value}
-          </button>
+          <Square />
+          <Square />
+          <Square />
         </div>
         <div class="board-row">
-          <button class="square mx-auto bg-slate-200 w-24 h-24 border-y-2 border-black" onClick={handleClick}>
-            {value}
-          </button>
-          <button class="square mx-auto bg-slate-200 w-24 h-24 border-2 border-black" onClick={handleClick}>
-            {value}
-          </button>
-          <button class="square mx-auto bg-slate-200 w-24 h-24 border-y-2 border-black" onClick={handleClick}>
-            {value}
-          </button>
+          <Square />
+          <Square />
+          <Square />
         </div>
         <div class="board-row">
-          <button class="square mx-auto bg-slate-200 w-24 h-24 shadow-lg" onClick={handleClick}>
-            {value}
-          </button>
-          <button class="square mx-auto bg-slate-200 w-24 h-24 border-x-2 border-black shadow-lg" onClick={handleClick}>
-            {value}
-          </button>
-          <button class="square mx-auto bg-slate-200 w-24 h-24 shadow-lg" onClick={handleClick}>
-            {value}
-          </button>
+          <Square />
+          <Square />
+          <Square />
         </div>
+        
+        
       </div>
     </>
   );
 }
-export default Square;
+export default Board;
