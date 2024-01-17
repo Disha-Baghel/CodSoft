@@ -62,8 +62,7 @@ function Board() {
           <Square />
           <Square />
         </div>
-        
-        
+  
       </div>
     </>
   );
