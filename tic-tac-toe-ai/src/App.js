@@ -25,7 +25,7 @@ function App() {
     <>
       <div className="flex justify-center items-center flex-col h-screen">
         <h1 className="text-3xl ">Tic Tac Toe</h1>
-        <div className="flex justify-center items-center flex-col-reverse">
+        <div className="flex justify-center items-center flex-col">
           <Board board={board} onClick={handleClick}/>
         </div>
   
