@@ -1,46 +1,36 @@
 import React from "react";
 import {useState} from 'react';
+import Board from "./components/Board";
 
-function Square() {
-  const [value, setValue] = useState("1");
 
-  function handleClick() {
-    console.log("click");
-    setValue("2");
+
+
+function App() {
+  const [board, setBoard] = useState(Array(9).fill('.'));
+  
+  const handleClick = (boxindex) => {
+    const updatedBoard = board.map((value, index) => {
+      if (index === boxindex) {
+        console.log("click")
+        return 'X';
+      }
+      return value;
     
+    })
+
+    setBoard(updatedBoard);
   }
 
   return (
-    <button className="square bg-slate-200 w-24 h-24 hover:bg-slate-300" onClick={handleClick}>
-      {value}
-    </button>
-  );
-  
-}
-
-function Board() {
-  return (
     <>
       <div className="flex justify-center items-center flex-col h-screen">
-        <h1 className="text-3xl">Tic Tac Toe</h1>
-        <div className="board-row">
-          <Square />
-          <Square />
-          <Square />
-        </div>
-        <div className="board-row">
-          <Square />
-          <Square />
-          <Square />
-        </div>
-        <div className="board-row">
-          <Square />
-          <Square />
-          <Square />
+        <h1 className="text-3xl ">Tic Tac Toe</h1>
+        <div className="grid justify-center items-center grid-cols-3 ">
+          <Board board={board} onClick={handleClick}/>
         </div>
   
       </div>
     </>
   );
 }
-export default Board;
+export default App;
