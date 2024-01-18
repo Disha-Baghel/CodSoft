@@ -6,7 +6,7 @@ import Board from "./components/Board";
 
 
 function App() {
-  const [board, setBoard] = useState(Array(9).fill('.'));
+  const [board, setBoard] = useState(Array(9).fill(null));
   
   const handleClick = (boxindex) => {
     const updatedBoard = board.map((value, index) => {
@@ -23,9 +23,9 @@ function App() {
 
   return (
     <>
-      <div className="flex justify-center items-center flex-col h-screen">
+      <div className="flex justify-center items-center flex-col h-screen bg-orange-200">
         <h1 className="text-3xl ">Tic Tac Toe</h1>
-        <div className="flex justify-center items-center flex-col">
+        <div >
           <Board board={board} onClick={handleClick}/>
         </div>
   

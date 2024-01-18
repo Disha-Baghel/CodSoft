@@ -6,7 +6,7 @@ import  Block from "./Block";
 const Board = ({board, onClick}) => {
 
   return (
-    <div>
+    <div className="grid justify-center items-center grid-cols-3 border-4 border-gray-500 shadow-2xl">
       {board.map((value, index) => {
         return <Block value={value} onClick={() => onClick(index)}/>
       })}

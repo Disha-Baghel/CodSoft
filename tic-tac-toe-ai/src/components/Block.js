@@ -13,7 +13,7 @@ const Block = ({value, onclick}) => {
     }
   
     return (
-      <button className="{style} square bg-slate-200 w-24 h-24 hover:bg-slate-300" onClick={onclick}>
+      <button className="{style} square bg-slate-200 w-24 h-24 hover:bg-slate-300 border-2 border-gray-400" onClick={onclick}>
         {value}
       </button>
     );
