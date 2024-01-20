@@ -21,10 +21,13 @@ function App() {
 
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xPlaying, setXPlaying] = useState(true);
+  const [win, setWin] = useState(null);
+  const [boardFull, setBoardFull] = useState(false);
 
   const reset = () => {
     setBoard(Array(9).fill(null));
     setXPlaying(true);
+    setWin(null);
   }
   
   const handleClick = (boxindex) => {
@@ -37,28 +40,45 @@ function App() {
         return value;
       }
     
-    })
+    });
 
-    checkWinner(updatedBoard)
     setBoard(updatedBoard);
+    checkWinner(updatedBoard)
     setXPlaying(!xPlaying);
   }
 
   const checkWinner = (board) => {
     for (let i=0; i<WINNING_COMBINATIONS.length; i++) {
       const [x, y, z] = WINNING_COMBINATIONS[i];
+      console.log(x, y, z)
 
       if (board[x] && board[x] === board[y] && board[y] === board[z]) {
         console.log(board[x]);
+        setWin(board[x]);
+        console.log(win)
         return board[x];
       }
+    
+    }
+    checkBoardfull();
+    
+  }
+  const checkBoardfull = () => {
+    let flag = false;
+    for (let i=0; i<board.length; i++) {
+      if (board[i] === !null) {
+        flag = true;
+      }
+    }
+    if (flag === true) {
+      setBoardFull(true);
     }
   }
 
   return (
     <>
       <div className="flex justify-center items-center flex-col h-screen bg-orange-200">
-        <h1 className="text-3xl ">Tic Tac Toe</h1>
+        <h1 className="text-4xl font-mono font-semibold">Tic Tac Toe</h1>
         <div >
           <Board board={board} onClick={handleClick}/>
         </div>
@@ -68,7 +88,7 @@ function App() {
         </div>
       <br></br>
         <div>
-           <p className="text-3xl visible">Winner {}</p>
+           <p className="text-2xl font-mono font-bold">Winner {win}</p>
         </div>
       </div>
     </>
