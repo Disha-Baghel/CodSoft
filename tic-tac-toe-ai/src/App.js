@@ -32,6 +32,10 @@ function App() {
   
   const handleClick = (boxindex) => {
 
+    if (win !== null) {
+      return null;
+    }
+
     const updatedBoard = board.map((value, index) => {
       if (index === boxindex) {
         return xPlaying===true ? "X" : "O";
@@ -60,18 +64,18 @@ function App() {
       }
     
     }
-    checkBoardfull();
+    checkBoardfull(board);
     
   }
-  const checkBoardfull = () => {
-    let flag = false;
+  const checkBoardfull = (board) => {
+    let flag = true;
     for (let i=0; i<board.length; i++) {
-      if (board[i] === !null) {
-        flag = true;
+      if (board[i] === null) {
+        flag = false;
       }
     }
     if (flag === true) {
-      setBoardFull(true);
+      setWin("tie");
     }
   }
 
@@ -88,7 +92,7 @@ function App() {
         </div>
       <br></br>
         <div>
-           <p className="text-2xl font-mono font-bold">Winner {win}</p>
+           <p className={`text-2xl font-mono font-bold ${win === null? 'invisible': 'visible'}`}>Winner: {win}</p>
         </div>
       </div>
     </>
