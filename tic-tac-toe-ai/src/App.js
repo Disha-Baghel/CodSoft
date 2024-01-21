@@ -31,34 +31,31 @@ function App() {
       return null;
     }
     
-    // board[boxindex] = xPlaying === true ? "X" : bestMove(board);
+    
     board[boxindex] = "X";
     
   
-    checkWinner(board);
-    console.log(win);
+    setWin(checkWinner(board));
+    // console.log(win);
     if (win === null) {
       let move = bestMove(board);
       board[move] = "O";
-      console.log(move);
+      // console.log(move);
     }
-    setBoard(board);
-    // setXPlaying(!xPlaying);
+    setBoard([...board]);
+    
   };
 
   const checkWinner = (board) => {
     for (let i = 0; i < WINNING_COMBINATIONS.length; i++) {
       const [x, y, z] = WINNING_COMBINATIONS[i];
-      // console.log(x, y, z);
 
       if (board[x] && board[x] === board[y] && board[y] === board[z]) {
-        console.log(board[x]);
-        setWin(board[x]);
-        // console.log(win);
         return board[x];
       }
     }
     checkBoardfull(board);
+    return null;
   };
 
   const checkBoardfull = (board) => {
@@ -69,8 +66,9 @@ function App() {
       }
     }
     if (flag === true) {
-      setWin("tie");
+      return "tie";
     }
+    return null;
   };
 
   ///////////////minimax//////////////////////////////////////////////
@@ -83,6 +81,7 @@ function App() {
       if (board[i] === null) {
         board[i] = "O";
         let score = minimax(board, 0, false);
+        console.log(score);
         board[i] = null;
         if (score > bestScore) {
           bestScore = score;
@@ -90,7 +89,7 @@ function App() {
         }
       }
     }
-    board[move] = "O";
+    // board[move] = "O";
     return move;
   }
 
@@ -102,7 +101,7 @@ function App() {
 
   function minimax(board, depth, isMaximizing) {
     let result = checkWinner(board);
-    console.log(result);
+    
     if (result !== null) {
       return scores[result];
     }
