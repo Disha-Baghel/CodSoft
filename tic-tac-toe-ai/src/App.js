@@ -54,8 +54,8 @@ function App() {
         return board[x];
       }
     }
-    checkBoardfull(board);
-    return null;
+    // let c = checkBoardfull(board);
+    return (checkBoardfull(board));
   };
 
   const checkBoardfull = (board) => {
@@ -81,7 +81,7 @@ function App() {
       if (board[i] === null) {
         board[i] = "O";
         let score = minimax(board, 0, false);
-        console.log(score);
+        // console.log(score);
         board[i] = null;
         if (score > bestScore) {
           bestScore = score;
