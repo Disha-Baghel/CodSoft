@@ -40,9 +40,9 @@ function App() {
     if (win === null) {
       let move = bestMove(board);
       board[move] = "O";
-      // console.log(move);
     }
     setBoard([...board]);
+    setWin(checkWinner(board));
     
   };
 
