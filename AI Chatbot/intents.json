@@ -7,7 +7,7 @@
         },
         {
             "tag": "name",
-            "patterns": ["what's your name", "tell me your name", "what are you called", "who are you"],
+            "patterns": ["what is your name", "tell me your name", "what are you called", "who are you"],
             "responses": ["I am a bot named Friendly", "My name is Friendly", ""]
         },
         {
